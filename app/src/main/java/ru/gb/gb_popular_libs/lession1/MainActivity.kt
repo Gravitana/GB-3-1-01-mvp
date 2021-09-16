@@ -10,29 +10,39 @@ class MainActivity : AppCompatActivity(activity_main), MainView {
 
     val presenter = MainPresenter(this)
 
-    private val btn_counter1: Button by lazy { findViewById(R.id.btn_counter1) }
-    private val btn_counter2: Button by lazy { findViewById(R.id.btn_counter2) }
-    private val btn_counter3: Button by lazy { findViewById(R.id.btn_counter3) }
+    private val btnCounter1: Button by lazy { findViewById(R.id.btn_counter1) }
+    private val btnCounter2: Button by lazy { findViewById(R.id.btn_counter2) }
+    private val btnCounter3: Button by lazy { findViewById(R.id.btn_counter3) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val listener = View.OnClickListener {
-            presenter.counterClick(it.id)
+        val listener1 = View.OnClickListener {
+            presenter.counterClick1()
         }
 
-        btn_counter1.setOnClickListener(listener)
-        btn_counter2.setOnClickListener(listener)
-        btn_counter3.setOnClickListener(listener)
-    }
-
-    //Подсказка к ПЗ: поделить на 3 отдельные функции и избавиться от index
-    override fun setButtonText(index: Int, text: String) {
-        when(index){
-            0 -> btn_counter1.text = text
-            1 -> btn_counter2.text = text
-            2 -> btn_counter3.text = text
+        val listener2 = View.OnClickListener {
+            presenter.counterClick2()
         }
+
+        val listener3 = View.OnClickListener {
+            presenter.counterClick3()
+        }
+
+        btnCounter1.setOnClickListener(listener1)
+        btnCounter2.setOnClickListener(listener2)
+        btnCounter3.setOnClickListener(listener3)
     }
 
+    override fun setButtonText1(text: String) {
+        btnCounter1.text = text
+    }
+
+    override fun setButtonText2(text: String) {
+        btnCounter2.text = text
+    }
+
+    override fun setButtonText3(text: String) {
+        btnCounter3.text = text
+    }
 }
