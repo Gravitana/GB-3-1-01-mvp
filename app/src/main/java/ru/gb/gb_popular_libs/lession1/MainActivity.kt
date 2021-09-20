@@ -10,9 +10,9 @@ class MainActivity : AppCompatActivity(activity_main), MainView {
 
     val presenter = MainPresenter(this)
 
-    private val btnCounter1: Button by lazy { findViewById(R.id.btn_counter1) }
-    private val btnCounter2: Button by lazy { findViewById(R.id.btn_counter2) }
-    private val btnCounter3: Button by lazy { findViewById(R.id.btn_counter3) }
+    private val showCounter1: Button by lazy { findViewById(R.id.btn_counter1) }
+    private val showCounter2: Button by lazy { findViewById(R.id.btn_counter2) }
+    private val showCounter3: Button by lazy { findViewById(R.id.btn_counter3) }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
@@ -29,20 +29,20 @@ class MainActivity : AppCompatActivity(activity_main), MainView {
             presenter.counterClick3()
         }
 
-        btnCounter1.setOnClickListener(listener1)
-        btnCounter2.setOnClickListener(listener2)
-        btnCounter3.setOnClickListener(listener3)
+        showCounter1.setOnClickListener(listener1)
+        showCounter2.setOnClickListener(listener2)
+        showCounter3.setOnClickListener(listener3)
     }
 
     override fun setButtonText1(text: String) {
-        btnCounter1.text = text
+        showCounter1.text = text
     }
 
     override fun setButtonText2(text: String) {
-        btnCounter2.text = text
+        showCounter2.text = text
     }
 
     override fun setButtonText3(text: String) {
-        btnCounter3.text = text
+        showCounter3.text = text
     }
 }
