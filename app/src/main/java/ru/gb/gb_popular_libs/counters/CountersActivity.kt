@@ -1,48 +1,55 @@
 package ru.gb.gb_popular_libs.counters
 
 import android.os.Bundle
-import android.view.View
-import android.widget.Button
-import androidx.appcompat.app.AppCompatActivity
+import android.widget.Toast
+import android.widget.Toast.LENGTH_SHORT
+import androidx.appcompat.app.AlertDialog
+import moxy.MvpAppCompatActivity
+import moxy.ktx.moxyPresenter
 import ru.gb.gb_popular_libs.counters.R.layout.activity_counters
+import ru.gb.gb_popular_libs.counters.databinding.ActivityCountersBinding
 
-class CountersActivity : AppCompatActivity(activity_counters), CountersView {
+class CountersActivity : MvpAppCompatActivity(activity_counters), CountersView {
 
-    val presenter = CountersPresenter(this)
+    private var viewBinding: ActivityCountersBinding? = null
 
-    private val counter1: Button by lazy { findViewById(R.id.btn_counter1) }
-    private val counter2: Button by lazy { findViewById(R.id.btn_counter2) }
-    private val counter3: Button by lazy { findViewById(R.id.btn_counter3) }
+    private val presenter by moxyPresenter {
+        CountersPresenter(model = CountersModel())
+    }
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        val listener1 = View.OnClickListener {
-            presenter.incrementCounter1()
-        }
-
-        val listener2 = View.OnClickListener {
-            presenter.incrementCounter2()
-        }
-
-        val listener3 = View.OnClickListener {
-            presenter.incrementCounter3()
-        }
-
-        counter1.setOnClickListener(listener1)
-        counter2.setOnClickListener(listener2)
-        counter3.setOnClickListener(listener3)
+        viewBinding = ActivityCountersBinding
+            .inflate(layoutInflater)
+            .also { viewBinding -> setContentView(viewBinding.root) }
+            .apply {
+                btnCounter1.setOnClickListener { presenter.incrementCounter1() }
+                btnCounter2.setOnClickListener { presenter.incrementCounter2() }
+                btnCounter3.setOnClickListener { presenter.incrementCounter3() }
+            }
     }
 
+    override fun showOnBoarding() =
+        AlertDialog
+            .Builder(this)
+            .setMessage(R.string.onboarding_message)
+            .create()
+            .show()
+
     override fun showCounter1(value: String) {
-        counter1.text = value
+        viewBinding?.btnCounter1?.text = value
     }
 
     override fun showCounter2(value: String) {
-        counter2.text = value
+        viewBinding?.btnCounter2?.text = value
     }
 
     override fun showCounter3(value: String) {
-        counter3.text = value
+        viewBinding?.btnCounter3?.text = value
     }
+
+    override fun showCounterMessage() =
+        Toast.makeText(this, R.string.counter_message, LENGTH_SHORT)
+            .show()
 }
