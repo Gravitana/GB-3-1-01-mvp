@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gb_popular_libs" >
         <activity
-            android:name="ru.gb.gb_popular_libs.counters.CountersActivity"
+            android:name="ru.gb.gb_popular_libs.users.MainActivity"
             android:exported="true"
         >
             <intent-filter>
