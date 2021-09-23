@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="ru.gb.gb_popular_libs.lession1">
+    package="ru.gb.gb_popular_libs.counters">
 
     <application
         android:allowBackup="true"
@@ -10,7 +10,7 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.Gb_popular_libs" >
         <activity
-            android:name=".MainActivity"
+            android:name="ru.gb.gb_popular_libs.counters.CountersActivity"
             android:exported="true"
         >
             <intent-filter>
