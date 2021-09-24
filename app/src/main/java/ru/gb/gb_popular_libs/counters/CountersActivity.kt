@@ -6,8 +6,10 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AlertDialog
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
-import ru.gb.gb_popular_libs.counters.R.layout.activity_counters
-import ru.gb.gb_popular_libs.counters.databinding.ActivityCountersBinding
+import ru.gb.gb_popular_libs.R
+import ru.gb.gb_popular_libs.R.layout.activity_counters
+import ru.gb.gb_popular_libs.click
+import ru.gb.gb_popular_libs.databinding.ActivityCountersBinding
 
 class CountersActivity : MvpAppCompatActivity(activity_counters), CountersView {
 
@@ -20,14 +22,15 @@ class CountersActivity : MvpAppCompatActivity(activity_counters), CountersView {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
 
-        viewBinding = ActivityCountersBinding
-            .inflate(layoutInflater)
-            .also { viewBinding -> setContentView(viewBinding.root) }
-            .apply {
-                btnCounter1.setOnClickListener { presenter.incrementCounter1() }
-                btnCounter2.setOnClickListener { presenter.incrementCounter2() }
-                btnCounter3.setOnClickListener { presenter.incrementCounter3() }
-            }
+        viewBinding =
+            ActivityCountersBinding
+                .inflate(layoutInflater)
+                .also { viewBinding -> setContentView(viewBinding.root) }
+                .apply {
+                    counter1.click(presenter::incrementCounter1)
+                    counter2.click(presenter::incrementCounter2)
+                    counter3.click(presenter::incrementCounter3)
+                }
     }
 
     override fun showOnBoarding() =
@@ -38,15 +41,15 @@ class CountersActivity : MvpAppCompatActivity(activity_counters), CountersView {
             .show()
 
     override fun showCounter1(value: String) {
-        viewBinding?.btnCounter1?.text = value
+        viewBinding?.counter1?.text = value
     }
 
     override fun showCounter2(value: String) {
-        viewBinding?.btnCounter2?.text = value
+        viewBinding?.counter2?.text = value
     }
 
     override fun showCounter3(value: String) {
-        viewBinding?.btnCounter3?.text = value
+        viewBinding?.counter3?.text = value
     }
 
     override fun showCounterMessage() =
