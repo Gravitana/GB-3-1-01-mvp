@@ -13,8 +13,8 @@
         tools:ignore="AllowBackup">
 
         <activity
-            android:name="ru.gb.gb_popular_libs.counters.CountersActivity"
-            android:label="@string/app_name_counters"
+            android:name="ru.gb.gb_popular_libs.presentation.MainActivity"
+            android:label="@string/app_name"
             android:exported="true">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />

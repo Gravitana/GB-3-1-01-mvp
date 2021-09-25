@@ -1,12 +1,3 @@
 <resources>
-    <string name="app_name">Popular Libraries</string>
-    <string name="counter_one">Счётчик 1</string>
-    <string name="counter_two">Счётчик 2</string>
-    <string name="counter_three">Счётчик 3</string>
-    <string name="onboarding_message">Нажимайте на кнопку и увеличивайте ее счётчик</string>
-    <string name="counter_message">Счётчик увеличен!</string>
-    <string name="app_name_counters">Counters</string>
-    <string name="app_name_users">Users</string>
-    <string name="user_id_title">Идентификатор</string>
-    <string name="user_name_title">Имя</string>
+    <string name="app_name">GitHubUsers</string>
 </resources>
