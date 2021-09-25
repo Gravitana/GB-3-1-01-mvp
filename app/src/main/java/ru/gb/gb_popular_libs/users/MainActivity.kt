@@ -4,8 +4,7 @@ import android.os.Bundle
 import com.github.terrakok.cicerone.androidx.AppNavigator
 import moxy.MvpAppCompatActivity
 import moxy.ktx.moxyPresenter
-import ru.gb.gb_popular_libs.counters.R
-import ru.gb.gb_popular_libs.counters.databinding.ActivityMainBinding
+import ru.gb.gb_popular_libs.users.databinding.ActivityMainBinding
 
 class MainActivity : MvpAppCompatActivity(), MainView {
 

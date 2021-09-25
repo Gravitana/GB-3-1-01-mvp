@@ -3,7 +3,7 @@ package ru.gb.gb_popular_libs.users
 import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
-import ru.gb.gb_popular_libs.counters.databinding.ItemUserBinding
+import ru.gb.gb_popular_libs.users.databinding.ItemUserBinding
 
 class UsersRVAdapter(val presenter: IUserListPresenter) : RecyclerView.Adapter<UsersRVAdapter.ViewHolder>() {
 
