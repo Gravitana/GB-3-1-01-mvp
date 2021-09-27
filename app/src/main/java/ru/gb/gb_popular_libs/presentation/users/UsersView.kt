@@ -11,4 +11,11 @@ interface UsersView : MvpView {
      */
     @SingleState
     fun showUsers(users: List<GitHubUser>)
+
+    /**
+     * Показывает текст ошибки.
+     * @param e исключение
+     */
+    @SingleState
+    fun showError(e: Throwable?)
 }
