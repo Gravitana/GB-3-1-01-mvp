@@ -15,26 +15,37 @@ import ru.gb.gb_popular_libs.databinding.ViewUsersBinding
 import ru.gb.gb_popular_libs.presentation.users.adapter.UsersAdapter
 
 class UsersFragment: MvpAppCompatFragment(view_users), UsersView, UsersAdapter.Delegate {
+
     companion object {
         fun newInstance(): Fragment =
             UsersFragment()
                 .arguments()
     }
+
     private val presenter: UsersPresenter by moxyPresenter {
         UsersPresenter(
             userRepository = GitHubUserRepositoryFactory.create(),
             router = router
         )
     }
+
     private val viewBinding: ViewUsersBinding by viewBinding()
+
     private val usersAdapter = UsersAdapter(delegate = this)
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
         viewBinding.users.adapter = usersAdapter
     }
+
     override fun showUsers(users: List<GitHubUser>) {
         usersAdapter.submitList(users)
     }
+
+    override fun showError(e: Throwable?) {
+        presenter.displayError(e?.message)
+    }
+
     override fun onUserPicked(user: GitHubUser) =
         presenter.displayUser(user)
 }
